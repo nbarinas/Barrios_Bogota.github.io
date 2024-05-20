@@ -11,7 +11,6 @@ export const barrios = [
     { localidad: "Bosa", nombre: "Arborizadora Baja", estrato: 2, sector: "Sur" },
     { localidad: "Bosa", nombre: "Arborizadora Alta", estrato: 2, sector: "Sur" },
     { localidad: "Bosa", nombre: "La Azucena", estrato: 1, sector: "Sur" },
-    { localidad: "Bosa", nombre: "Berlín", estrato: 2, sector: "Sur" },
     { localidad: "Bosa", nombre: "Betania", estrato: 2, sector: "Sur" },
     { localidad: "Bosa", nombre: "Ciudadela El Recreo", estrato: 2, sector: "Sur" },
     { localidad: "Bosa", nombre: "El Corzo", estrato: 2, sector: "Sur" },

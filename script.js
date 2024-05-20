@@ -4,7 +4,7 @@ let map;
 let markersGroup = L.layerGroup(); // Define un grupo de capas para los marcadores
 
 document.addEventListener("DOMContentLoaded", function() {
-    const center = [4.6097102, -74.081749];
+    const center = [4.666091, -74.107272];
     map = L.map('map').setView(center, 12);
     const streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
@@ -143,7 +143,8 @@ function obtenerBarriosAleatorios(lista, n) {
 }
 
 async function obtenerCoordenadas(barrio, localidad) {
-    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(barrio + ', ' + localidad + ', Bogotá, Colombia')}`;
+    
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(  localidad + ', ' + barrio)}`;
     const response = await fetch(url);
     const data = await response.json();
     if (data.length > 0) {
@@ -154,6 +155,8 @@ async function obtenerCoordenadas(barrio, localidad) {
     }
     return { lat: 0, lon: 0 }; // Valores predeterminados si no se encuentran coordenadas
 }
+
+
 
 function mostrarMapa(latitud, longitud, localidad, nombre) {
     map.setView([latitud, longitud], 13);
