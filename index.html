@@ -3,76 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barrios de Bogotá</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <title>Escoge una Ciudad</title>
     <style>
-        #map {
-            height: 400px;
-            width: 400px;
-            display: none;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px; /* Añadir borde redondeado */
+            text-align: center; /* Centrar el contenido del contenedor */
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 10px 20px 0;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .section {
+            display: none; /* Ocultar todas las secciones por defecto */
+        }
+
+        .section.active {
+            display: block; /* Mostrar la sección activa */
         }
     </style>
 </head>
 <body>
-    <div class="page 1">
-        <div class="container">
-            <h1>Barrios de Bogotá</h1>
-            <div class="button-container">
-                <button id="showRandomSection">Barrios Aleatorios</button>
-                <button id="showSearchSection">Buscar Barrios</button>
-            </div>
-            <div class="section" id="generarAleatorios">
-                <h2>Generar Barrios Aleatorios</h2>
-                <fieldset>
-                    <legend>Seleccionar Estratos:</legend>
-                    <div class="checkbox-container">
-                        <label for="estrato1">Estrato 1</label>
-                        <input type="checkbox" id="estrato1" value="1">
-                        <label for="estrato2">Estrato 2</label>
-                        <input type="checkbox" id="estrato2" value="2">
-                        <label for="estrato3">Estrato 3</label>
-                        <input type="checkbox" id="estrato3" value="3">
-                        <label for="estrato4">Estrato 4</label>
-                        <input type="checkbox" id="estrato4" value="4">
-                        <label for="estrato5">Estrato 5</label>
-                        <input type="checkbox" id="estrato5" value="5">
-                        <label for="estrato6">Estrato 6</label>
-                        <input type="checkbox" id="estrato6" value="6">
-                    </div>
-                </fieldset>
-                <label for="sector">Seleccionar Sector:</label>
-                <select id="sector">
-                    <option value="todos">En todos los sectores</option>
-                    <option value="Norte">Norte</option>
-                    <option value="Sur">Sur</option>
-                    <option value="Centro">Centro</option>
-                </select>
-                <label for="numeroBarrios">Número de Barrios:</label>
-                <input type="number" id="numeroBarrios" min="1" max="20" value="5">
-                <button id="randomButton">Generar</button>
-            </div>
-            <div class="section" id="buscarPorPalabra">
-                <h2>Buscar Barrios por Palabra</h2>
-                <input type="text" id="searchBarrio" list="barrioNames" placeholder="Ingresa el nombre del barrio">
-                <datalist id="barrioNames"></datalist>
-                <label for="sector">Seleccionar Sector:</label>
-                <select id="sector">
-                    <option value="todos">En todos los sectores</option>
-                    <option value="Norte">Norte</option>
-                    <option value="Sur">Sur</option>
-                    <option value="Centro">Centro</option>
-                </select>
-                <button id="searchButton">Buscar</button>
-            </div>
-            <div id="results">
-                <ul id="selectedBarrios"></ul>
-                <button id="showMapButton" style="display:none;">Mostrar en Mapa</button>
-            </div>
-            <div id="map"></div>
+    <div class="container">
+        <h1>Escoge una Ciudad</h1>
+        <div class="button-container">
+            <button onclick="window.location.href='./Bogota'">Bogotá</button>
+            <button onclick="window.location.href='./Medellin'">Medellín</button>
+            <button onclick="window.location.href='./Cali'">Cali</button>
+            <button onclick="window.location.href='./Bucaramanga'">Bucaramanga</button>
+            <button onclick="window.location.href='./Barranquilla'">Barranquilla</button>
+        </div>
+
+        <div id="bogota" class="section">
+            <h2>Bogotá</h2>
+            <p>Contenido relacionado con Bogotá.</p>
+        </div>
+        <div id="medellin" class="section">
+            <h2>Medellín</h2>
+            <p>Contenido relacionado con Medellín.</p>
+        </div>
+        <div id="cali" class="section">
+            <h2>Cali</h2>
+            <p>Contenido relacionado con Cali.</p>
+        </div>
+        <div id="bucaramanga" class="section">
+            <h2>Bucaramanga</h2>
+            <p>Contenido relacionado con Bucaramanga.</p>
+        </div>
+        <div id="barranquilla" class="section">
+            <h2>Barranquilla</h2>
+            <p>Contenido relacionado con Barranquilla.</p>
         </div>
     </div>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script type="module" src="./script.js"></script>
+
+    <script>
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            var sections = document.querySelectorAll('.section');
+            sections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+
+            // Mostrar la sección seleccionada
+            var selectedSection = document.getElementById(sectionId);
+            selectedSection.classList.add('active');
+        }
+    </script>
 </body>
 </html>

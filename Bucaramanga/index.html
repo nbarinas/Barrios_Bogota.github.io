@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barrios de Bucaramanga</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 400px;
+            width: 400px;
+            display: none;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        #backButton {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page 1">
+        <div class="container">
+            <h1>Barrios de Bucaramanga</h1>
+            <a href="../index.html" id="backButton"><button>Volver a la Página Principal</button></a>
+            <div class="button-container">
+                <button id="showRandomSection">Barrios Aleatorios</button>
+                <button id="showSearchSection">Buscar Barrios</button>
+            </div>
+            <div class="section" id="generarAleatorios">
+                <h2>Generar Barrios Aleatorios</h2>
+                <fieldset>
+                    <legend>Seleccionar Estratos:</legend>
+                    <div class="checkbox-container">
+                        <label for="estrato1">Estrato 1</label>
+                        <input type="checkbox" id="estrato1" value="1">
+                        <label for="estrato2">Estrato 2</label>
+                        <input type="checkbox" id="estrato2" value="2">
+                        <label for="estrato3">Estrato 3</label>
+                        <input type="checkbox" id="estrato3" value="3">
+                        <label for="estrato4">Estrato 4</label>
+                        <input type="checkbox" id="estrato4" value="4">
+                        <label for="estrato5">Estrato 5</label>
+                        <input type="checkbox" id="estrato5" value="5">
+                        <label for="estrato6">Estrato 6</label>
+                        <input type="checkbox" id="estrato6" value="6">
+                    </div>
+                </fieldset>
+                <label for="sector">Seleccionar Sector:</label>
+                <select id="sector">
+                    <option value="todos">En todos los sectores</option>
+                    <option value="Norte">Norte</option>
+                    <option value="Sur">Sur</option>
+                    <option value="Centro">Centro</option>
+                </select>
+                <label for="numeroBarrios">Número de Barrios:</label>
+                <input type="number" id="numeroBarrios" min="1" max="20" value="5">
+                <button id="randomButton">Generar</button>
+            </div>
+            <div class="section" id="buscarPorPalabra">
+                <h2>Buscar Barrios por Palabra</h2>
+                <input type="text" id="searchBarrio" list="barrioNames" placeholder="Ingresa el nombre del barrio">
+                <datalist id="barrioNames"></datalist>
+                <label for="sector">Seleccionar Sector:</label>
+                <select id="sector">
+                    <option value="todos">En todos los sectores</option>
+                    <option value="Norte">Norte</option>
+                    <option value="Sur">Sur</option>
+                    <option value="Centro">Centro</option>
+                </select>
+                <button id="searchButton">Buscar</button>
+            </div>
+            <div id="results">
+                <ul id="selectedBarrios"></ul>
+                <button id="showMapButton" style="display:none;">Mostrar en Mapa</button>
+            </div>
+            <div id="map"></div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script type="module" src="./script.js"></script>
+</body>
+</html>
