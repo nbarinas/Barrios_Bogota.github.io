@@ -4,7 +4,7 @@ let map;
 let markersGroup = L.layerGroup(); // Define un grupo de capas para los marcadores
 
 document.addEventListener("DOMContentLoaded", function() {
-    const center = [4.666091, -74.107272];
+    const center = [7.109134958461643, -73.1152388650213];
     map = L.map('map').setView(center, 12);
     const streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
