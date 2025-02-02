@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const selectedBarrios = document.getElementById("selectedBarrios");
     const searchBarrioInput = document.getElementById("searchBarrio");
     const barrioNamesDatalist = document.getElementById("barrioNames");
-    const sectorSelect = document.getElementById("sectorSelect"); // Corregido ID aquí
-    const sectorSearch = document.getElementById("sectorSearch"); // Añadido para la búsqueda
+    const sectorSelect = document.getElementById("sectorSelect");
+    const sectorSearch = document.getElementById("sectorSearch");
 
     const showRandomSectionButton = document.getElementById("showRandomSection");
     const showSearchSectionButton = document.getElementById("showSearchSection");
@@ -62,8 +62,8 @@ document.addEventListener("DOMContentLoaded", function() {
             `;
             listItem.setAttribute("data-latitud", lat);
             listItem.setAttribute("data-longitud", lon);
-            listItem.setAttribute("data-localidad", barrio.localidad);  // Adding locality data attribute
-            listItem.setAttribute("data-nombre", barrio.nombre);  // Adding barrio name data attribute
+            listItem.setAttribute("data-localidad", barrio.localidad);
+            listItem.setAttribute("data-nombre", barrio.nombre);
             selectedBarrios.appendChild(listItem);
         }
         document.getElementById("showMapButton").style.display = "block";
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
         selectedBarrios.innerHTML = "";
         document.getElementById("results").style.display = "block";
         const searchTerm = searchBarrioInput.value.trim();
-        const sectorSeleccionado = sectorSearch.value; // Corregido aquí
+        const sectorSeleccionado = sectorSearch.value;
         const barriosEncontrados = barrios.filter(barrio => {
             return (barrio.nombre.toLowerCase().includes(searchTerm.toLowerCase()) &&
                     (sectorSeleccionado === 'todos' || barrio.sector.toLowerCase() === sectorSeleccionado.toLowerCase()));
@@ -89,8 +89,8 @@ document.addEventListener("DOMContentLoaded", function() {
             `;
             listItem.setAttribute("data-latitud", lat);
             listItem.setAttribute("data-longitud", lon);
-            listItem.setAttribute("data-localidad", barrio.localidad);  // Adding locality data attribute
-            listItem.setAttribute("data-nombre", barrio.nombre);  // Adding barrio name data attribute
+            listItem.setAttribute("data-localidad", barrio.localidad);
+            listItem.setAttribute("data-nombre", barrio.nombre);
             selectedBarrios.appendChild(listItem);
         }
         document.getElementById("showMapButton").style.display = "block";
@@ -108,7 +108,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const showMapButton = document.getElementById("showMapButton");
     showMapButton.addEventListener("click", function() {
-        // Limpia todos los marcadores existentes antes de agregar uno nuevo
         markersGroup.clearLayers();
 
         const primeraUbicacion = selectedBarrios.querySelector("li");
@@ -153,24 +152,19 @@ async function obtenerCoordenadas(barrio, localidad) {
             lon: data[0].lon
         };
     }
-    return { lat: 0, lon: 0 }; // Valores predeterminados si no se encuentran coordenadas
+    return { lat: 0, lon: 0 };
 }
 
 function mostrarMapa(latitud, longitud, localidad, nombre) {
     map.setView([latitud, longitud], 13);
-
-    // Limpia todos los marcadores existentes antes de agregar uno nuevo
     markersGroup.clearLayers();
 
-    // Verifica si el barrio actual coincide con el que estamos buscando
     const barrioBuscado = selectedBarrios.querySelector(`li[data-nombre="${nombre}"]`);
     if (barrioBuscado) {
-        // Agrega el nuevo marcador al grupo de capas
         L.marker([latitud, longitud]).addTo(markersGroup)
             .bindPopup(`<p>Localidad: ${localidad}</p><p>Barrio: ${nombre}</p>`)
             .openPopup();
 
-        // Añade el grupo de capas al mapa
         markersGroup.addTo(map);
     }
 }
