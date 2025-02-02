@@ -1,7 +1,7 @@
 export const barrios = [
-    { nombre: "Chapinero", localidad: "Chapinero", estrato: 4, sector: "Norte" },
-    { nombre: "Usaquén", localidad: "Usaquén", estrato: 5, sector: "Norte" },
-    { nombre: "Teusaquillo", localidad: "Teusaquillo", estrato: 4, sector: "Centro" },
+    { localidad:  "Chapinero", localidad: "Chapinero", estrato: 4, sector: "Norte" },
+    { localidad:  "Usaquén", localidad: "Usaquén", estrato: 5, sector: "Norte" },
+    { localidad:  "Teusaquillo", localidad: "Teusaquillo", estrato: 4, sector: "Centro" },
     { localidad: "Bosa", nombre: "El Recreo", estrato: 2, sector: "Sur" },
     { localidad: "Bosa", nombre: "Los Naranjos", estrato: 2, sector: "Sur" },
     { localidad: "Bosa", nombre: "Las Margaritas", estrato: 2, sector: "Sur" },
