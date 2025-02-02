@@ -53,7 +53,7 @@ export const barrios = [
 { localidad: "El Pondaje", nombre: "Poblado", estrato: 3, sector: "Sur" },
 { localidad: "Cali-Aguacatal", nombre: "Popular", estrato: 2, sector: "Sur" },
 { localidad: "Cañaveralejo", nombre: "Portal De Comfandi", estrato: 3, sector: "Norte" },
-    { localidad: "Cañaveralejo", nombre: "Quintas De Salomia", estrato: 3, sector: "Norte" },
+{ localidad: "Cañaveralejo", nombre: "Quintas De Salomia", estrato: 3, sector: "Norte" },
 { localidad: "Cali-Aguacatal", nombre: "Refugio", estrato: 4, sector: "Sur" },
 { localidad: "Cali-Aguacatal", nombre: "Republica De Israel", estrato: 2, sector: "Sur" },
 { localidad: "Cañaveralejo", nombre: "Rivera", estrato: 2, sector: "Norte" },
